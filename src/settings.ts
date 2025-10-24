@@ -22,14 +22,14 @@ export const social = {
 };
 
 export const template = {
-  website_url: "https://localhost:4321", // Astro needs to know your site’s deployed URL to generate a sitemap. It must start with http:// or https://
+  website_url: "https://co-dia.github.io", // Astro needs to know your site’s deployed URL to generate a sitemap. It must start with http:// or https://
   menu_left: false,
   transitions: true,
   lightTheme: "winter", // winter | nord | fantasy
   darkTheme: "night", //  night | dracula | synthwave
   excerptLength: 200,
   postPerPage: 5,
-  base: "", // Repository name starting with /
+  base: "/portfolio/", // Repository name starting with /
 };
 
 export const seo = {
