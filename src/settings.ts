@@ -29,7 +29,7 @@ export const template = {
   darkTheme: "night", //  night | dracula | synthwave
   excerptLength: 200,
   postPerPage: 5,
-  base: "/portfolio/", // Repository name starting with /
+  base: "", // Repository name starting with / | '/portfolio/' for github pages deployment
 };
 
 export const seo = {
