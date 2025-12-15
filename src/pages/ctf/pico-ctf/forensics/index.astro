@@ -4,7 +4,9 @@ import { getCollection } from 'astro:content'
 
 const challenges = await getCollection('ctf')
 
-const webChallenges = challenges.filter((c) => c.id.startsWith('pico-ctf/web/'))
+const webChallenges = challenges.filter((c) =>
+  c.id.startsWith('pico-ctf/forensics/')
+)
 
 const challengesCards = webChallenges.map((challenge) => ({
   title: challenge.data.title,
@@ -12,4 +14,4 @@ const challengesCards = webChallenges.map((challenge) => ({
 }))
 ---
 
-<CardList listTitle="Web Challenges" listItems={challengesCards} />
+<CardList listTitle="Forensics Challenges" listItems={challengesCards} />

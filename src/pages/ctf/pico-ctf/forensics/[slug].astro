@@ -1,23 +1,26 @@
 ---
 import CTFWriteup from '@/components/ui/CTFWriteup.astro'
+import Layout from '@/layouts/Layout.astro'
 import { render } from 'astro:content'
 import { getCollection } from 'astro:content'
+import { ClockIcon } from 'lucide-react'
 
 // 1️⃣ Tell Astro which pages to generate
 export async function getStaticPaths() {
   const challengesCollection = await getCollection('ctf')
 
-  // Only include challenges inside pico-ctf/Web
-  const webChallenges = challengesCollection.filter((c) =>
-    c.id.startsWith('pico-ctf/web/')
+  // Only include challenges inside pico-ctf/forensics
+  const challenges = challengesCollection.filter((c) =>
+    c.id.startsWith('pico-ctf/forensics/')
   )
 
-  return webChallenges.map((c) => ({
+  return challenges.map((c) => ({
     params: { slug: c.slug.split('/').pop() },
     props: { challenge: c },
   }))
 }
 
+// 2️⃣ Receive props for each generated page
 const { challenge } = Astro.props
 const { Content } = await render(challenge)
 ---
