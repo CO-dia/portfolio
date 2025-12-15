@@ -1,5 +1,5 @@
 ---
-title: 'SQL Injection 1'
+title: 'SSTI 1'
 difficulty: 'Easy'
 date: 2025-10-27
 link: 'https://play.picoctf.org/practice/challenge/492?page=1&search='

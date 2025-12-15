@@ -1,0 +1,36 @@
+---
+import CTFWriteup from '@/components/ui/CTFWriteup.astro'
+import Layout from '@/layouts/Layout.astro'
+import { render } from 'astro:content'
+import { getCollection } from 'astro:content'
+import { ClockIcon } from 'lucide-react'
+
+// 1️⃣ Tell Astro which pages to generate
+export async function getStaticPaths() {
+  const challengesCollection = await getCollection('ctf')
+
+  // Only include challenges inside pico-ctf/general-skills
+  const challenges = challengesCollection.filter((c) =>
+    c.id.startsWith('pico-ctf/general-skills/')
+  )
+
+  return challenges.map((c) => ({
+    params: { slug: c.slug.split('/').pop() },
+    props: { challenge: c },
+  }))
+}
+
+const { challenge } = Astro.props
+const { Content } = await render(challenge)
+---
+
+<CTFWriteup
+  title={challenge.data.title}
+  date={challenge.data.date}
+  tags={challenge.data.tags}
+  difficulty={challenge.data.difficulty}
+  timeSpent={challenge.data.timeSpent}
+  link={challenge.data.link}
+>
+  <Content />
+</CTFWriteup>

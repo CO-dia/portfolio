@@ -25,7 +25,7 @@ timeSpent: '10'
 1. Went on the website and tested a SQL injection
 2. Then went in the inspector to see if anything could help me
 3. Found something that was encoded
-   ![[Pasted image 20251023001559.png]]
+   ![Image](/images/crack_the_gate1.png)
 4. Tried to identify the encoding here : https://www.dcode.fr/identification-chiffrement
    - Found it was probably a`ROT-13`, decoded it
    - Got this : NOTE: Jack - temporary bypass: use header "X-Dev-Access: yes"
