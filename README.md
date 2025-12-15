@@ -23,30 +23,30 @@ The `cv.ts` file located in the `src/data/` directory is used to define the stru
 export const cv = {
   education: [
     {
-      degree: "Ph.D. in Computer Science",
-      institution: "University of Example",
-      year: "2020",
+      degree: 'Ph.D. in Computer Science',
+      institution: 'University of Example',
+      year: '2020',
     },
     {
-      degree: "M.Sc. in Computer Science",
-      institution: "University of Example",
-      year: "2016",
+      degree: 'M.Sc. in Computer Science',
+      institution: 'University of Example',
+      year: '2016',
     },
   ],
   experience: [
     {
-      title: "Research Scientist",
-      company: "Example Research Lab",
-      year: "2021-Present",
+      title: 'Research Scientist',
+      company: 'Example Research Lab',
+      year: '2021-Present',
     },
     {
-      title: "Software Engineer",
-      company: "Tech Company",
-      year: "2016-2021",
+      title: 'Software Engineer',
+      company: 'Tech Company',
+      year: '2016-2021',
     },
   ],
   // Add more sections as needed
-};
+}
 ```
 
 To create or update your CV, modify the `cv.ts` file with your personal information and achievements. The CV will be automatically rendered on the CV page of your website.
@@ -59,15 +59,15 @@ The `settings.ts` file located in the `src/` directory is used to configure vari
 
 ```typescript
 export const settings = {
-  siteTitle: "Astro Academia",
-  siteDescription: "A personal academic website built with Astro.",
+  siteTitle: 'Astro Academia',
+  siteDescription: 'A personal academic website built with Astro.',
   socialLinks: {
-    twitter: "https://twitter.com/yourusername",
-    github: "https://github.com/yourusername",
-    linkedin: "https://linkedin.com/in/yourusername",
+    twitter: 'https://twitter.com/yourusername',
+    github: 'https://github.com/yourusername',
+    linkedin: 'https://linkedin.com/in/yourusername',
   },
   // Add more settings as needed
-};
+}
 ```
 
 To customize your website settings, modify the `settings.ts` file with your desired values. These settings will be used throughout your website to display the appropriate information.
@@ -86,10 +86,10 @@ The blog collection is located in the `src/content/BlogPosts/` directory. Each b
 
 ```markdown
 ---
-title: "New Blog Post"
-date: "2023-10-01"
-tags: ["research", "astro"]
-excerpt: "Some short paragraphs"
+title: 'New Blog Post'
+date: '2023-10-01'
+tags: ['research', 'astro']
+excerpt: 'Some short paragraphs'
 ---
 
 # New Blog Post
@@ -100,4 +100,5 @@ This is the content of the new blog post. Write your article here using Markdown
 Once you have added the new blog post, it will be automatically included in the blog collection and displayed on the blog page of your website.
 
 ## Deploy
+
 The template provides a workflow to deploy the website on Github pages as a static website.

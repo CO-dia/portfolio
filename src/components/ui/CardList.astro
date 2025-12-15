@@ -1,0 +1,51 @@
+---
+import Layout from '@/layouts/Layout.astro'
+
+interface Props {
+  listTitle: string
+  listItems: {
+    title: string
+    link: string
+  }[]
+}
+
+const { listTitle, listItems } = Astro.props
+---
+
+<Layout>
+  <!-- Hero Section -->
+  <section class="flex items-center gap-12 border-b pb-12">
+    {listTitle}
+  </section>
+
+  <div class="grid">
+    {
+      listItems.map((item) => (
+        <a href={item.link} class="card">
+          <h2>{item.title}</h2>
+        </a>
+      ))
+    }
+  </div>
+</Layout>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  .card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 1rem;
+    text-decoration: none;
+    color: inherit;
+    background: white;
+    transition: transform 0.1s ease;
+  }
+  .card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+</style>

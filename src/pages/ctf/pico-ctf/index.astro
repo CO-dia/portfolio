@@ -1,11 +1,9 @@
 ---
-import Layout from '../../../layouts/Layout.astro'
+import CardList from '@/components/ui/CardList.astro'
 
+const categories = [
+  { title: 'Web', link: '/ctf/pico-ctf/web' },
+  { title: 'Forensics', link: '/ctf/pico-ctf/forensics' },
+  { title: 'Cryptography', link: '/ctf/pico-ctf/cryptography' },
+]
 ---
-
-<Layout>
-	<!-- Hero Section -->
-	<section class='flex items-center gap-12 border-b pb-12'>
-		Categories of picoCTF Write-ups	
-	</section>
-</Layout>

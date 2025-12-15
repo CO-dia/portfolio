@@ -1,6 +1,6 @@
 ---
-title: "SQL Injection 1"
-difficulty: "Easy"
+title: 'SQL Injection 1'
+difficulty: 'Easy'
 date: 2025-10-27
 ---
 
