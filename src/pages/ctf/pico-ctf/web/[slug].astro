@@ -2,6 +2,7 @@
 import Layout from '@/layouts/Layout.astro'
 import { render } from 'astro:content'
 import { getCollection } from 'astro:content'
+import { ClockIcon } from 'lucide-react'
 
 // 1️⃣ Tell Astro which pages to generate
 export async function getStaticPaths() {
@@ -90,6 +91,17 @@ const { Content } = await render(challenge)
             )
           }
         </div>
+        <div class="flex gap-2 my-4 items-center text-base-content/70">
+          <ClockIcon className="w-4" /> Time Spent: {
+            challenge.data.timeSpent ?? 'N/A'
+          } minutes
+        </div>
+        <a
+          href={challenge.data.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-base-content/70">{challenge.data.link}</a
+        >
       </div>
 
       <!-- Post content -->

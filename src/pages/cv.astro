@@ -5,7 +5,6 @@ import CvTimeline from '@/components/ui/CvTimeline.astro'
 
 import type { Experience, Education, Publication } from '../types/cv'
 import List from '@/components/ui/List.astro'
-import PublicationsList from '@/components/ui/PublicationsList.astro'
 
 let orderedExperiences: Experience[] = []
 let orderedEducations: Education[] = []
@@ -37,12 +36,6 @@ if (education.length > 0) {
     return orderElement(a, b)
   })
 }
-
-if (publications.length > 0) {
-  orderedPublications = publications.sort((a, b) => {
-    return orderElement(a, b)
-  })
-}
 ---
 
 <Layout>
@@ -60,15 +53,6 @@ if (publications.length > 0) {
       <section class="mb-12">
         <h2 class="text-2xl font-bold mb-6 border-b pb-2">Experiences</h2>
         <CvTimeline elements={orderedExperiences} colored={true} />
-      </section>
-    )
-  }
-
-  {
-    orderedPublications.length > 0 && (
-      <section class="mb-12">
-        <h2 class="text-2xl font-bold mb-6 border-b pb-2">Last publications</h2>
-        <PublicationsList elements={orderedPublications} />
       </section>
     )
   }

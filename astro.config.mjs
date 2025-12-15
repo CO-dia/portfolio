@@ -8,9 +8,11 @@ import { template } from './src/settings'
 
 import sitemap from '@astrojs/sitemap'
 
+import icon from 'astro-icon';
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), tailwind(), sitemap()],
+  integrations: [react(), tailwind(), sitemap(), icon()],
   site: template.website_url,
   base: template.base,
 })

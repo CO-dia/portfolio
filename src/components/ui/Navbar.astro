@@ -15,7 +15,7 @@ const { fullName, title } = profile
 ---
 
 <aside
-  class="px-4 pt-4 min-h-screen w-[20rem] bg-base-200 text-base-content flex flex-col"
+  class="px-4 pt-4 h-screen w-[20rem] bg-base-200 text-base-content flex flex-col"
 >
   <div class="flex flex-col my-8 justify-between h-full">
     <div>
@@ -29,25 +29,22 @@ const { fullName, title } = profile
         </div>
         <h1 class="text-lg font-black mt-8 hidden lg:block">
           {title}
-          <span>{fullName}</span>
+          <span>{fullName} </span>
         </h1>
       </div>
-      <div class="mx-4 mt-16">
+      <div class="mx-4 mt-8">
         <ul class="space-y-4 menu grow shrink menu-md overflow-y-auto">
           <li>
             <a href={`${template.base}/`} class="text-lg">Home</a>
           </li>
           <li>
-            <a href={`${template.base}/research`} class="text-lg">Research</a>
-          </li>
-          <li>
-            <a href={`${template.base}/papers`} class="text-lg">Papers</a>
-          </li>
-          <li>
-            <a href={`${template.base}/cv`} class="text-lg">CV</a>
+            <a href={`${template.base}/projects`} class="text-lg">Projects</a>
           </li>
           <li>
             <a href={`${template.base}/ctf`} class="text-lg">CTF Write-ups</a>
+          </li>
+          <li>
+            <a href={`${template.base}/cv`} class="text-lg">CV</a>
           </li>
 
           {
@@ -63,10 +60,7 @@ const { fullName, title } = profile
       </div>
     </div>
 
-    <div class="flex justify-center items-center mb-4">
-      {(<DarkLightController />)}
-    </div>
-    <div class="mx-4">
+    <div class="mx-4 mt-auto pb-6">
       <SocialIcons />
     </div>
   </div>

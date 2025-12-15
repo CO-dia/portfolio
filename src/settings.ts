@@ -1,11 +1,18 @@
+import { publications } from './data/cv'
+
 export const profile = {
   fullName: 'Dia Raboana',
   title: '',
   institute: '',
   author_name: '', // Author name to be highlighted in the papers section
   research_areas: [
-    // { title: 'Physics', description: 'Brief description of the research interest', field: 'physics' },
+    {
+      title: 'Physics',
+      description: 'Brief description of the research interest',
+      field: 'physics',
+    },
   ],
+  publications: publications,
 }
 
 // Set equal to an empty string to hide the icon that you don't want to display

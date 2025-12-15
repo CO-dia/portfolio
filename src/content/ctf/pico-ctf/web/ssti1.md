@@ -2,7 +2,17 @@
 title: 'SQL Injection 1'
 difficulty: 'Easy'
 date: 2025-10-27
+link: 'https://play.picoctf.org/practice/challenge/492?page=1&search='
+timeSpent: '25'
 ---
+
+<!--
+**Date:** 2025-10-19
+**Platform:** PicoCTF
+**Category:** Web
+**Difficulty:** Easy
+**Time spent:** 25m
+**Link:** https://play.picoctf.org/practice/challenge/492?page=1&search= -->
 
 ## 🧠 What I Practiced/Learned/Discovered
 

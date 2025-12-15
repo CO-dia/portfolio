@@ -16,6 +16,8 @@ const ctfCollection = defineCollection({
     title: z.string(),
     difficulty: z.enum(['Easy', 'Medium', 'Hard']),
     date: z.date().optional(),
+    timeSpent: z.string().optional(),
+    link: z.string().optional(),
     tags: z.array(z.string()).optional(),
   }),
 })
