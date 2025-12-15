@@ -5,7 +5,7 @@ import { getCollection } from 'astro:content'
 const challenges = await getCollection('ctf')
 
 const webChallenges = challenges.filter((c) =>
-  c.id.startsWith('pico-ctf/forensics/')
+  c.id.startsWith('pico-ctf/cryptography/')
 )
 
 const challengesCards = webChallenges.map((challenge) => ({
