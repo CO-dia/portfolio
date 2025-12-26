@@ -1,6 +1,7 @@
 ---
 import { isExperience } from '@/types/cv'
 import type { Experience, Education } from '@/types/cv'
+import { Building2, MapPin, PinIcon } from 'lucide-react'
 
 interface Props {
   elements: (Experience | Education)[]
@@ -37,9 +38,17 @@ const { elements, colored } = Astro.props
           <div class="text-lg font-black">
             {isExperience(element) ? element.title : element.degree}
           </div>
+          <div class="text-sm gap-2 flex flex-col items-end">
+            <div class="flex self-end">
+              {isExperience(element) ? element.company : element.school}
+              <Building2 />
+            </div>
+            <div class="flex">
+              {element.location}
+              <MapPin />
+            </div>
+          </div>
           <div>{element.description}</div>
-          <div>{isExperience(element) ? element.company : element.school}</div>
-          <div>{element.location}</div>
         </div>
         <hr class:list={[{ 'bg-accent': colored }]} />
       </li>

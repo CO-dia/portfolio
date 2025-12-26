@@ -1,10 +1,24 @@
 export const experiences = [
   {
-    company: '',
-    time: '',
-    title: '',
-    location: '',
-    description: '',
+    company: 'LPSolution',
+    time: 'Nov 2025 – Present',
+    title: 'Frontend Developer',
+    location: 'Montreal',
+    description: 'Built the company website: https://lpsolution.ca/',
+  },
+  {
+    company: 'LPSolution',
+    time: 'Nov 2025 – Present',
+    title: 'Frontend Developer',
+    location: 'Montreal',
+    description: 'Built the company website: https://lpsolution.ca/',
+  },
+  {
+    company: 'LPSolution',
+    time: 'Nov 2025 – Present',
+    title: 'Frontend Developer',
+    location: 'Montreal',
+    description: 'Built the company website: https://lpsolution.ca/',
   },
   // {
   // 	company: 'Radium Institute (Institut du Radium)',
@@ -41,24 +55,4 @@ export const skills = [
   // 	title: 'Experimental Techniques',
   // 	description: 'Spectroscopy, Isolation of Radioactive Elements, Radiation Measurement',
   // },
-]
-
-export const publications = [
-  {
-    title: '',
-    authors: '',
-    journal: '',
-    time: '',
-    link: '',
-    abstract: '',
-  },
-  {
-    title: 'The Radiation of Uranium Compounds',
-    authors: 'Marie Curie',
-    journal: 'Comptes Rendus de l’Académie des Sciences',
-    time: '1898',
-    link: '#',
-    abstract:
-      'Early research leading to the identification of uranium’s radioactive properties.',
-  },
 ]
