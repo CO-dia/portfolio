@@ -1,7 +1,7 @@
 ---
 import { isExperience } from '@/types/cv'
 import type { Experience, Education } from '@/types/cv'
-import { Building2, MapPin, PinIcon } from 'lucide-react'
+import { Building2, MapPin } from 'lucide-react'
 
 interface Props {
   elements: (Experience | Education)[]
@@ -11,49 +11,40 @@ interface Props {
 const { elements, colored } = Astro.props
 ---
 
-<ul
-  class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical"
->
+<div class="grid gap-6">
   {
-    elements.map((element, index) => (
-      <li>
-        <div class="timeline-middle">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            class:list={[{ 'text-accent': colored }, 'h-5 w-5']}
-          >
-            <path
-              fill-rule="evenodd"
-              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-              clip-rule="evenodd"
-            />
-          </svg>
+    elements.map((element) => (
+      <div class="p-6 bg-base-200 rounded-xl">
+        <div class="flex items-start justify-between mb-3">
+          <div>
+            <h3 class="text-xl font-semibold text-base-content mb-1">
+              {isExperience(element) ? element.title : element.degree}
+            </h3>
+            <div class="text-sm text-base-content/70 flex flex-wrap items-center gap-x-2 gap-y-0.5">
+              <span class="flex items-center gap-1.5">
+                <Building2 className="size-4 shrink-0" />
+                {isExperience(element) ? element.company : element.school}
+              </span>
+              {element.location && (
+                <>
+                  <span aria-hidden="true">•</span>
+                  <span class="flex items-center gap-1.5">
+                    <MapPin className="size-4 shrink-0" />
+                    {element.location}
+                  </span>
+                </>
+              )}
+              <span aria-hidden="true">•</span>
+              <time class="font-mono italic">{element.time}</time>
+            </div>
+          </div>
         </div>
-        <div
-          class={`${index % 2 === 0 ? 'timeline-start' : 'timeline-end'} mb-10 md:text-end`}
-        >
-          <time class="font-mono italic">{element.time}</time>
-          <div class="text-lg font-black">
-            {isExperience(element) ? element.title : element.degree}
-          </div>
-          <div class="text-sm gap-2 flex flex-col items-end">
-            <div class="flex self-end">
-              {isExperience(element) ? element.company : element.school}
-              <Building2 />
-            </div>
-            <div class="flex">
-              {element.location}
-              <MapPin />
-            </div>
-          </div>
-          <div class="text-base-content whitespace-pre-line">
+        {element.description && (
+          <div class="text-base-content whitespace-pre-line text-sm leading-relaxed">
             {element.description}
           </div>
-        </div>
-        <hr class:list={[{ 'bg-accent': colored }]} />
-      </li>
+        )}
+      </div>
     ))
   }
-</ul>
+</div>

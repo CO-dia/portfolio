@@ -1,0 +1,100 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import {
+  professionalProjects,
+  personalOnlyProjects,
+} from '@/data/cv'
+import { template } from '@/settings'
+import TechBadge from '@/components/ui/TechBadge.astro'
+---
+
+<Layout title="Projects" description="Personal and professional projects by Dia Raboana.">
+  <div class="max-w-4xl mx-auto">
+    <header class="mb-10 border-b pb-8">
+      <h1 class="text-4xl font-bold text-base-content mb-2">Projects</h1>
+      <p class="text-base-content/70">
+        A selection of projects I've built or contributed to.
+      </p>
+    </header>
+
+    {professionalProjects.length > 0 && (
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-base-content mb-6 border-b pb-2">
+          Professional Projects
+        </h2>
+        <div class="grid gap-6">
+          {professionalProjects.map((project) => (
+            <a
+              href={`${template.base}/projects/${project.slug}`}
+              class="block p-6 bg-base-200 rounded-xl hover:bg-base-300 transition-colors"
+            >
+              <div class="flex items-start justify-between mb-3">
+                <div>
+                  <h2 class="text-xl font-semibold text-base-content mb-1">
+                    {project.name}
+                  </h2>
+                  <div class="text-sm text-base-content/70">
+                    {project.time}
+                    {project.location && ` • ${project.location}`}
+                  </div>
+                </div>
+                <span class="text-primary text-sm font-medium">View project →</span>
+              </div>
+              <p class="text-base-content/90 mb-4 line-clamp-2">{project.description}</p>
+              <div class="flex flex-wrap gap-2">
+                {project.technologies.slice(0, 5).map((tech) => (
+                  <TechBadge name={tech} size="sm" variant="ghost" />
+                ))}
+                {project.technologies.length > 5 && (
+                  <span class="badge badge-ghost badge-sm">
+                    +{project.technologies.length - 5}
+                  </span>
+                )}
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {personalOnlyProjects.length > 0 && (
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-base-content mb-6 border-b pb-2">
+          Personal Projects
+        </h2>
+        <div class="grid gap-6">
+          {personalOnlyProjects.map((project) => (
+            <a
+              href={`${template.base}/projects/${project.slug}`}
+              class="block p-6 bg-base-200 rounded-xl hover:bg-base-300 transition-colors"
+            >
+              <div class="flex items-start justify-between mb-3">
+                <div>
+                  <h2 class="text-xl font-semibold text-base-content mb-1">
+                    {project.name}
+                  </h2>
+                  <div class="text-sm text-base-content/70">
+                    {project.time}
+                    {project.location && ` • ${project.location}`}
+                  </div>
+                </div>
+                <span class="text-primary text-sm font-medium">View project →</span>
+              </div>
+              <p class="text-base-content/90 mb-4 line-clamp-2">{project.description}</p>
+              <div class="flex flex-wrap gap-2">
+                {project.technologies.slice(0, 5).map((tech) => (
+                  <TechBadge name={tech} size="sm" variant="ghost" />
+                ))}
+                {project.technologies.length > 5 && (
+                  <span class="badge badge-ghost badge-sm">
+                    +{project.technologies.length - 5}
+                  </span>
+                )}
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+  </div>
+</Layout>

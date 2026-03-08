@@ -6,7 +6,8 @@ import {
   education,
   skills,
   skillCategories,
-  personalProjects,
+  professionalProjects,
+  personalOnlyProjects,
   certifications,
   competitions,
 } from '../data/cv'
@@ -69,8 +70,18 @@ if (education.length > 0) {
     )
   }
 
-  {personalProjects.length > 0 && (
-    <PersonalProjectsSection projects={personalProjects} />
+  {professionalProjects.length > 0 && (
+    <PersonalProjectsSection
+      projects={professionalProjects}
+      title="Professional Projects"
+    />
+  )}
+
+  {personalOnlyProjects.length > 0 && (
+    <PersonalProjectsSection
+      projects={personalOnlyProjects}
+      title="Personal Projects"
+    />
   )}
 
   {

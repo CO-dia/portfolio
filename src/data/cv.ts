@@ -9,7 +9,7 @@ export const experiences = [
   {
     company: 'LPSolution',
     time: 'Nov 2025 – Present',
-    title: 'Frontend Developer',
+    title: 'Full Stack Developer (Part-time)',
     location: 'Montreal',
     description:
       'Techs: Next.js - React - TypeScript - Tailwind CSS - React Hook Form - Zod - GitHub\n\nBuilt the company website: https://lpsolution.ca/',
@@ -24,9 +24,78 @@ export const experiences = [
   },
 ]
 
-export const personalProjects = [
+export type ProjectCategory = 'professional' | 'personal'
+
+export type PersonalProject = {
+  name: string
+  slug: string
+  category: ProjectCategory
+  time: string
+  location?: string
+  description: string
+  technologies: string[]
+  link?: string
+  videoUrl?: string
+  details?: string[]
+}
+
+export const personalProjects: PersonalProject[] = [
+  {
+    name: 'Diaderma Booking',
+    slug: 'diaderma-booking',
+    category: 'professional',
+    time: '2025',
+    location: 'LPSolution',
+    description:
+      'Full-stack booking platform for Diaderma (esthetics clinic): clients book appointments online, manage subscriptions and packages, and receive confirmations/modifications by email. A major part of the project is the admin panel, which gives staff and admins full control over the business.',
+    technologies: [
+      'Laravel',
+      'React',
+      'TypeScript',
+      'Inertia.js',
+      'Tailwind CSS',
+      'Radix UI',
+      'Vite',
+      'Laravel Fortify',
+      'Clover (payments)',
+    ],
+    link: 'https://booking.diaderma.ca/',
+    details: [
+      'Admin panel: dashboard, calendar, appointments, today’s bookings and sales, finance and statistics.',
+      'Client management: profiles, notes, measurements, assigned packages and subscriptions, invitation-based registration.',
+      'Admin management of services, packages, subscription plans, products, rooms, employees, business settings, and blocked time slots.',
+      'Invoicing, forms, and export; signed URLs for booking confirm, cancel, and modify flows.',
+    ],
+  },
+  {
+    name: 'RDS Avocats',
+    slug: 'rds-avocats',
+    category: 'professional',
+    time: '2025',
+    location: 'Clients',
+    description:
+      'Website for RDS Avocats — a law firm specializing in business law, business immigration, commercial, corporate, family, criminal and civil law. Bilingual (English / French) with embedded consultation booking.',
+    technologies: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'next-intl',
+      'Cal.com',
+      'Lucide React',
+    ],
+    link: 'https://rds-avocats.com',
+    details: [
+      'App Router, locale-based routes (EN/FR) with next-intl.',
+      'Lawyer profile pages, services, team section, and about.',
+      'Cal.com embed for consultation booking; service and subject choices driven by config.',
+      'QR code and share functionality on lawyer contact pages.',
+    ],
+  },
   {
     name: 'Spync',
+    slug: 'spync',
+    category: 'personal',
     time: 'June 2025 – Present',
     location: 'Montreal',
     description:
@@ -49,10 +118,12 @@ export const personalProjects = [
   },
   {
     name: 'Fixt',
+    slug: 'fixt',
+    category: 'personal',
     time: 'Aug 2024 – Sep 2024',
     location: 'Montreal',
     description:
-      'SaaS that automatically analyzes website text content using only the URL.',
+      'SaaS that finds errors in the text of a website and shows them to the user so they can fix the content. Users enter a URL; the app fetches and analyzes the page text, then surfaces grammar, vocabulary, and typo issues with suggestions for improvement.',
     technologies: [
       'Next.js',
       'TypeScript',
@@ -63,12 +134,22 @@ export const personalProjects = [
       'OpenAI API',
       'Stripe',
     ],
+    videoUrl: 'https://www.youtube.com/watch?v=0wY_WLX34lU',
     details: [
-      'Highlights grammar, vocabulary, and typo errors in the text.',
-      'Suggests improvements to optimize the content.',
+      'User provides a website URL; Fixt fetches and extracts the text content.',
+      'Detects grammar, vocabulary, and typo errors and highlights them in context.',
+      'Shows suggestions and improvements so the user can correct the text directly.',
+      'Helps content owners and editors improve website copy before publishing.',
     ],
   },
 ]
+
+export const professionalProjects = personalProjects.filter(
+  (p) => p.category === 'professional'
+)
+export const personalOnlyProjects = personalProjects.filter(
+  (p) => p.category === 'personal'
+)
 
 export const education = [
   {
@@ -85,12 +166,12 @@ export const certifications = [
     name: 'Google Cybersecurity Certificate',
     issuer: 'Google',
     time: 'Oct 2025',
-    status: 'In progress',
   },
   {
     name: 'CompTIA Security+',
     issuer: 'CompTIA',
     time: '',
+    status: 'In progress',
   },
 ]
 

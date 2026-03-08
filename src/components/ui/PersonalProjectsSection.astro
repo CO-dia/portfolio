@@ -1,21 +1,18 @@
 ---
+import { template } from '@/settings'
+import type { PersonalProject } from '@/data/cv'
+import TechBadge from '@/components/ui/TechBadge.astro'
+
 interface Props {
-  projects: {
-    name: string
-    time: string
-    location?: string
-    description: string
-    technologies: string[]
-    link?: string
-    details?: string[]
-  }[]
+  projects: PersonalProject[]
+  title?: string
 }
 
-const { projects } = Astro.props
+const { projects, title = 'Personal Projects' } = Astro.props
 ---
 
 <section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6 border-b pb-2">Personal Projects</h2>
+  <h2 class="text-2xl font-bold mb-6 border-b pb-2">{title}</h2>
   <div class="grid gap-6">
     {
       projects.map((project) => (
@@ -23,34 +20,47 @@ const { projects } = Astro.props
           <div class="flex items-start justify-between mb-3">
             <div>
               <h3 class="text-xl font-semibold text-base-content mb-1">
-                {project.name}
+                <a
+                  href={`${template.base}/projects/${project.slug}`}
+                  class="hover:text-primary hover:underline"
+                >
+                  {project.name}
+                </a>
               </h3>
               <div class="text-sm text-base-content/70">
                 {project.time}
                 {project.location && ` • ${project.location}`}
               </div>
             </div>
-            {
-              project.link && (
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-primary hover:underline"
-                >
-                  View →
-                </a>
-              )
-            }
+            <div class="flex items-center gap-3">
+              <a
+                href={`${template.base}/projects/${project.slug}`}
+                class="text-primary hover:underline text-sm"
+              >
+                Read more
+              </a>
+              {
+                project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-primary hover:underline"
+                  >
+                    View site →
+                  </a>
+                )
+              }
+            </div>
           </div>
           <p class="text-base-content mb-4">{project.description}</p>
-          <div class="mb-4">
-            <span class="text-sm font-semibold text-base-content/70">
-              Technologies:{' '}
+          <div class="mb-4 flex flex-wrap gap-2 items-center">
+            <span class="text-sm font-semibold text-base-content/70 mr-1">
+              Technologies:
             </span>
-            <span class="text-sm text-base-content">
-              {project.technologies.join(' • ')}
-            </span>
+            {project.technologies.map((tech) => (
+              <TechBadge name={tech} size="sm" />
+            ))}
           </div>
           {
             project.details && project.details.length > 0 && (

@@ -1,0 +1,103 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { personalProjects } from '@/data/cv'
+import { template } from '@/settings'
+import type { PersonalProject } from '@/data/cv'
+import TechBadge from '@/components/ui/TechBadge.astro'
+
+export async function getStaticPaths() {
+  return personalProjects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }))
+}
+
+const { project } = Astro.props as { project: PersonalProject }
+---
+
+<Layout
+  title={project.name}
+  description={project.description}
+>
+  <div class="max-w-4xl mx-auto">
+    <article class="pb-12">
+      <header class="mb-8 border-b pb-8">
+        <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+          <div>
+            <h1 class="text-4xl font-bold text-base-content mb-2">
+              {project.name}
+            </h1>
+            <div class="text-base-content/70">
+              {project.time}
+              {project.location && ` • ${project.location}`}
+            </div>
+          </div>
+          {project.link && (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary btn-outline"
+            >
+              Visit website →
+            </a>
+          )}
+        </div>
+      </header>
+
+      <div class="prose max-w-none prose-p:text-base-content/90 prose-li:text-base-content/90">
+        <p class="text-lg leading-relaxed mb-8">{project.description}</p>
+
+        {project.videoUrl && (
+          <section class="mb-8">
+            <h2 class="text-2xl font-bold text-base-content mb-4 border-b pb-2">
+              Video
+            </h2>
+            <div class="aspect-video w-full max-w-2xl rounded-lg overflow-hidden bg-base-200">
+              <iframe
+                src={project.videoUrl.replace('watch?v=', 'embed/')}
+                title={`${project.name} video`}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                class="w-full h-full"
+              />
+            </div>
+          </section>
+        )}
+
+        <section class="mb-8">
+          <h2 class="text-2xl font-bold text-base-content mb-4 border-b pb-2">
+            Technologies
+          </h2>
+          <div class="flex flex-wrap gap-2">
+            {project.technologies.map((tech) => (
+              <TechBadge name={tech} size="lg" />
+            ))}
+          </div>
+        </section>
+
+        {project.details && project.details.length > 0 && (
+          <section class="mb-8">
+            <h2 class="text-2xl font-bold text-base-content mb-4 border-b pb-2">
+              Highlights
+            </h2>
+            <ul class="list-disc list-inside space-y-2 text-base-content/90">
+              {project.details.map((detail) => (
+                <li>{detail}</li>
+              ))}
+            </ul>
+          </section>
+        )}
+      </div>
+
+      <footer class="mt-12 pt-6 border-t">
+        <a
+          href={`${template.base}/projects`}
+          class="text-primary hover:underline"
+        >
+          ← Back to all projects
+        </a>
+      </footer>
+    </article>
+  </div>
+</Layout>

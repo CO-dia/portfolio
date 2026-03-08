@@ -1,0 +1,43 @@
+---
+import { Icon } from 'astro-icon/components'
+import { getTechIcon } from '@/data/techIcons'
+
+interface Props {
+  name: string
+  size?: 'sm' | 'lg'
+  variant?: 'default' | 'ghost'
+}
+
+const { name, size = 'lg', variant = 'default' } = Astro.props
+const iconName = getTechIcon(name)
+const badgeClass =
+  variant === 'ghost'
+    ? `badge badge-ghost ${size === 'sm' ? 'badge-sm' : 'badge-lg'}`
+    : `badge ${size === 'sm' ? 'badge-sm' : 'badge-lg'}`
+const iconSize = size === 'sm' ? 'w-4 h-4' : 'w-5 h-5'
+---
+
+<span class={`${badgeClass} flex items-center gap-1.5 inline-flex`}>
+  {iconName ? (
+    <div class="skill-icon-container" data-icon={iconName}>
+      <Icon
+        name={iconName}
+        class={`${iconSize} flex-shrink-0 skill-icon`}
+      />
+    </div>
+  ) : (
+    <span
+      class={`${iconSize} rounded flex items-center justify-center flex-shrink-0 bg-base-content/20 text-base-content/80 text-xs font-semibold`}
+      aria-hidden
+    >
+      {name.charAt(0).toUpperCase()}
+    </span>
+  )}
+  <span>{name}</span>
+</span>
+
+<style is:global>
+  .skill-icon {
+    color: currentColor;
+  }
+</style>
