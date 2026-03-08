@@ -1,0 +1,84 @@
+---
+interface Props {
+  competitions: {
+    name: string
+    time: string
+    description?: string
+    link?: string
+    achievements?: string[]
+  }[]
+}
+
+const { competitions } = Astro.props
+---
+
+<section class="mb-12">
+  <h2 class="text-2xl font-bold mb-6 border-b pb-2">Competitions</h2>
+  <div class="grid gap-6">
+    {
+      competitions.map((competition) => (
+        <div class="p-6 bg-base-200 rounded-xl">
+          <div class="flex items-start justify-between mb-3">
+            <div>
+              <h3 class="text-lg font-semibold text-base-content mb-1">
+                {competition.name}
+              </h3>
+              <div class="text-sm text-base-content/70">{competition.time}</div>
+            </div>
+            {
+              competition.link && (
+                <a
+                  href={competition.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-primary hover:underline"
+                >
+                  View →
+                </a>
+              )
+            }
+          </div>
+          {
+            competition.description && (
+              <p class="text-base-content mb-3">{competition.description}</p>
+            )
+          }
+          {
+            competition.achievements &&
+              competition.achievements.length > 0 && (
+                <ul class="list-disc list-inside space-y-1 text-base-content">
+                  {competition.achievements.map((achievement) => {
+                    // Extract URL if present
+                    const urlMatch = achievement.match(/\((https?:\/\/[^)]+)\)/)
+                    const text = urlMatch
+                      ? achievement.replace(/\s*\(https?:\/\/[^)]+\)/, '')
+                      : achievement
+                    const url = urlMatch ? urlMatch[1] : null
+
+                    return (
+                      <li>
+                        {text}
+                        {url && (
+                          <>
+                            {' '}
+                            <a
+                              href={url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              class="text-primary hover:underline"
+                            >
+                              (View)
+                            </a>
+                          </>
+                        )}
+                      </li>
+                    )
+                  })}
+                </ul>
+              )
+          }
+        </div>
+      ))
+    }
+  </div>
+</section>

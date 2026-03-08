@@ -1,0 +1,21 @@
+---
+interface Props {
+  description: string
+}
+
+const { description } = Astro.props
+
+// Highlight keywords
+const formattedDescription = description
+  .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+---
+
+<section class="mb-12">
+  <h2 class="text-2xl font-bold mb-6 border-b pb-2">Profile</h2>
+  <div class="p-6 bg-base-200 rounded-xl">
+    <p
+      class="text-base-content leading-relaxed"
+      set:html={formattedDescription}
+    />
+  </div>
+</section>

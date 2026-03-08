@@ -1,10 +1,9 @@
 ---
-import Layout from '../../layouts/Layout.astro'
+import CardList from '@/components/ui/CardList.astro'
+
+const ctfs = [
+  { title: 'picoCTF', link: '/ctf/pico-ctf' },
+]
 ---
 
-<Layout>
-  <!-- Hero Section -->
-  <section class="flex items-center gap-12 border-b pb-12">
-    List of CTFs
-  </section>
-</Layout>
+<CardList listTitle="CTF Write-ups" listItems={ctfs} />

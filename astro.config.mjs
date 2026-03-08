@@ -12,7 +12,16 @@ import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), tailwind(), sitemap(), icon()],
+  integrations: [
+    react(),
+    tailwind(),
+    sitemap(),
+    icon({
+      include: {
+        'simple-icons': ['*'], // Include all simple-icons
+      },
+    }),
+  ],
   site: template.website_url,
   base: template.base,
 })

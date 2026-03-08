@@ -48,7 +48,9 @@ const { elements, colored } = Astro.props
               <MapPin />
             </div>
           </div>
-          <div>{element.description}</div>
+          <div class="text-base-content whitespace-pre-line">
+            {element.description}
+          </div>
         </div>
         <hr class:list={[{ 'bg-accent': colored }]} />
       </li>
