@@ -3,9 +3,7 @@ import Layout from '@/layouts/Layout.astro'
 import { template } from '@/settings'
 import { getCollection, render } from 'astro:content'
 
-export async function getStaticPaths(): Promise<
-  Array<{ params: { slug: string }; props: { post: any } }>
-> {
+export async function getStaticPaths() {
   const blogEntries = await getCollection('blog')
 
   const posts = blogEntries.map((post) => {
@@ -20,13 +18,16 @@ export async function getStaticPaths(): Promise<
 const { post } = Astro.props
 const { title, date, tags } = post.data
 const { Content } = await render(post)
+const formattedDate = new Date(date).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+})
 ---
 
 <Layout title={title}>
   <div class="max-w-4xl mx-auto">
-    <article
-      class="prose max-w-none prose-headings:text-base-content prose-p:text-base-content/80"
-    >
+    <article class="prose max-w-none prose-headings:text-base-content prose-p:text-base-content/80">
       <!-- Header section -->
       <div class="mb-8 border-b pb-8">
         <h1 class="text-4xl font-bold mb-4 text-base-content">{title}</h1>
@@ -47,13 +48,7 @@ const { Content } = await render(post)
                 d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
               ></path>
             </svg>
-            {
-              new Date(date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })
-            }
+            {formattedDate}
           </time>
 
           <!-- Tags -->
