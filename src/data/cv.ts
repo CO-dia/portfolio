@@ -1,3 +1,5 @@
+export const publications: Array<{ title: string; venue?: string; year?: string; link?: string }> = []
+
 export const profile = {
   description:
     'Passionate about web development, specialized in the **Next.js / React / TypeScript** ecosystem. I enjoy creating modern, smooth interfaces, with a strong focus on performance, code quality, and user experience. I am particularly passionate about building SaaS because I genuinely enjoy solving problems.',
